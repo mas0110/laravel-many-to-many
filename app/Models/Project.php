@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Technology extends Model
+class Project extends Model
 {
     use HasFactory;
 
@@ -14,15 +14,16 @@ class Technology extends Model
         'slug'
     ];
 
+
     public static function generateSlug($title)
     {
         return Str::slug($title, '-');
     }
 
-    //una singola tecnologia è collegata a più progetti
+    //un singolo progetto è collegato a più tags
 
-    public function tecnology(): BelongsToMany
+    public function project(): BelongsToMany
     {
-        return $this->belongsToMany(Technology::class);
+        return $this->belongsToMany(Project::class);
     }
 }
